@@ -1,0 +1,15 @@
+﻿<Controls:MetroWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:local="clr-namespace:Mandarin_GroundStation" x:Name="MandarinMainWindow" x:Class="Mandarin_GroundStation.MainWindow"
+    xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+    xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
+    Height="600"
+    Width="1200"
+    Title="Mandarin GS" 
+    ResizeMode="CanResizeWithGrip"
+    MinWidth="1200" 
+    MinHeight="600" Loaded="MandarinMainWindow_Loaded">
+    <Grid x:Name="MainControlGrid"></Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,70 @@
+﻿<UserControl x:Name="VehicleStatueControl" x:Class="Mandarin_GroundStation.VehicleStatue"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+             xmlns:local="clr-namespace:Mandarin_GroundStation"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="850" Loaded="DeviceStatueControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="700"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2" Background="#FF1585B5">
+            <Label Content="{Binding Model.ConnectionMethodLabel}" FontSize="14" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ConnectionMethodComboBox" FontSize="12" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
+            <Label Content="{Binding Model.BaudRateLabel}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="210,0,0,0"/>
+            <ComboBox x:Name="BaultRateComboBox" Width="80" HorizontalAlignment="Left" Margin="277,0,0,0" FontSize="12" VerticalAlignment="Center">
+                <ComboBoxItem Content="9600"/>
+                <ComboBoxItem Content="19200"/>
+                <ComboBoxItem Content="38400"/>
+                <ComboBoxItem Content="43000"/>
+                <ComboBoxItem Content="56000"/>
+                <ComboBoxItem Content="57600"/>
+                <ComboBoxItem Content="115200"/>
+            </ComboBox>
+            <Label Content="{Binding Model.IPAddressLabel}" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="380,10,0,10"/>
+            <TextBox x:Name="IPTextBox" Margin="450,0,0,0" FontSize="12" TextAlignment="Left" TextWrapping="Wrap" Text="127" HorizontalAlignment="Left" Width="35" VerticalAlignment="Center"/>
+            <TextBox x:Name="IPTextBox_Copy" Margin="500,20,0,20" FontSize="12" TextAlignment="Left" TextWrapping="Wrap" Text="127" HorizontalAlignment="Left" Width="35" VerticalAlignment="Center"/>
+            <TextBox x:Name="IPTextBox_Copy1" Margin="550,20,0,20" FontSize="12" TextAlignment="Left" TextWrapping="Wrap" Text="127" HorizontalAlignment="Left" Width="35" VerticalAlignment="Center"/>
+            <TextBox x:Name="IPTextBox_Copy2" Margin="600,20,0,20" FontSize="12" TextAlignment="Left" TextWrapping="Wrap" Text="127" HorizontalAlignment="Left" Width="35" VerticalAlignment="Center"/>
+            <TextBox x:Name="IPTextBox_Copy3" Margin="650,20,0,20" FontSize="12" TextAlignment="Left" TextWrapping="Wrap" Text="8866" HorizontalAlignment="Left" Width="45" VerticalAlignment="Center"/>
+            <Button x:Name="ConnectButton" Margin="720,10,0,10" Click="ConnectButton_Click" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center" Style="{StaticResource AccentedSquareButtonStyle}">
+                <Grid>
+                    <Image Source="Resource/VehicleControl_Connect.png" Margin="0,0,55,0"/>
+                    <Label Content="{Binding Model.CreateConnectionLabel}" Margin="0,5,0,5" HorizontalAlignment="Right"/>
+                </Grid>
+            </Button>
+            <Grid>
+                <Label x:Name="label" Content="." HorizontalAlignment="Left" Margin="485,31,0,0" VerticalAlignment="Top" Height="25" Width="15" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="label_Copy3" Content="." HorizontalAlignment="Left" Margin="535,29,0,0" VerticalAlignment="Top" Height="25" Width="15" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="label_Copy4" Content="." HorizontalAlignment="Left" Margin="585,29,0,0" VerticalAlignment="Top" Height="25" Width="15" Foreground="White" FontWeight="Bold"/>
+                <Label x:Name="label_Copy5" Content=":" HorizontalAlignment="Left" Margin="635,29,0,0" VerticalAlignment="Top" Height="25" Width="15" Foreground="White" FontWeight="Bold"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <cefSharp:ChromiumWebBrowser x:Name="MapBrowser"/>
+        </Grid>
+        <Grid Margin="0,0,0,0" Grid.Column="1" Grid.Row="2" Background="#FF464646">
+            <Label Content="{Binding Model.AllVehicleOprationLabel}" FontSize="16" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="LoadWaypointButton" Margin="60,45,530,30" Content="{Binding Model.LoadWaypointLabel}" Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="VoyageStartButton" Margin="175,45,415,30" Content="{Binding Model.VoyageStartLabel}" Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="TakeOffButton" Margin="290,45,300,30" Content="{Binding Model.TakeoffLabel}" Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="LandButton" Margin="405,45,185,30" Content="{Binding Model.LandLabel}" Style="{DynamicResource SquareButtonStyle}"/>
+            <Button x:Name="ReversalButton" Margin="520,45,60,30" Content="{Binding Model.ReversalLabel}" Style="{StaticResource AccentedSquareButtonStyle}"/>
+        </Grid>
+        <ScrollViewer Grid.Column="2" Grid.RowSpan="1" Grid.Row="1">
+            <Grid>
+                <Label Content="{Binding Model.CreateConnectionTipLabel}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="3,30,3,3" FontSize="16" Foreground="#FF9B9B9B"/>
+                <Grid x:Name="VehicleControlsView" Margin="0,2,0,2"></Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
