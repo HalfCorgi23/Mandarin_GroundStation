@@ -30,7 +30,7 @@ namespace Mandarin_GroundStation
         }
         private void HelpCenterHome_Click(object sender, RoutedEventArgs e)
         {
-            HelpCenterBrowser.WebBrowser.Load("http://github.com");
+            HelpCenterBrowser.WebBrowser.Load("https://github.com/Issac-Pandroid/Mandarin_GroundStation/wiki");
         }
     }
 }

@@ -6,15 +6,70 @@
              xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
              xmlns:local="clr-namespace:Mandarin_GroundStation"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="600" Loaded="UserControl_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="500"/>
         </Grid.ColumnDefinitions>
-        <cefSharp:ChromiumWebBrowser></cefSharp:ChromiumWebBrowser>
-        <Grid Grid.Column="1">
-            
+        <cefSharp:ChromiumWebBrowser x:Name="MapBroswer" Grid.Row="1" />
+        <Grid Grid.Column="1" Margin="0,0,0,0" Grid.Row="1">
+            <ScrollViewer>
+                <Grid Margin="5">
+                    <Label Content="{Binding Model.AddWaypointType_Label}" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
+                    <Button x:Name="Button_Takeoff" Style="{StaticResource SquareButtonStyle}"  HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="120" Height="51">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image Source="Resource/RouteManagement_TakeoffWaypoint.png" Margin="5,5,65,5"/>
+                            <Label Content="{Binding Model.Takeoff_Label}" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="10"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="Button_Land" Style="{StaticResource SquareButtonStyle}"  HorizontalAlignment="Left" Margin="155,54,0,0" VerticalAlignment="Top" Width="120" Height="51">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image Source="Resource/RouteManagement_LandWaypoint.png" Margin="5,5,65,5"/>
+                            <Label Content="{Binding Model.Land_Label}" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="10"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="Button_Notdefined" Style="{StaticResource SquareButtonStyle}"  HorizontalAlignment="Left" Margin="295,54,0,0" VerticalAlignment="Top" Width="120" Height="51">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image Source="Resource/RouteManagement_CloudDeckOperation.png" Margin="5,5,65,5"/>
+                            <Label Content="{Binding Model.NotDefined_Label}" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="10"/>
+                        </Grid>
+                    </Button>
+                    <Label Content="{Binding Model.Latitude_Label}" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Label Content="{Binding Model.Longtitude_Label}" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Label Content="{Binding Model.Altitude_Label}" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <Button x:Name="Button_AddWaypoiint" Style="{StaticResource SquareButtonStyle}"  HorizontalAlignment="Left" Margin="170,149,0,0" VerticalAlignment="Top" Width="90" Height="75" Click="Button_AddWaypoiint_Click">
+                        <Grid Margin="2">
+                            <Image Source="Resource/RouteManagement_AddWaypoint.png" Margin="10,0,10,20"/>
+                            <Label Content="{Binding Model.AddWaypoint_Label}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontSize="10"/>
+                        </Grid>
+                    </Button>
+                    <TextBox x:Name="TextBox_Latitude" HorizontalAlignment="Left" Height="30" Margin="60,135,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <TextBox x:Name="TextBox_Longtitude" HorizontalAlignment="Left" Height="30" Margin="60,174,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <TextBox x:Name="TextBox_Altitude" HorizontalAlignment="Left" Height="30" Margin="60,213,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="75" FontSize="16"/>
+                    <DataGrid x:Name="DataGrid_Waypoints" HorizontalAlignment="Stretch" Margin="0,280,0,0" VerticalAlignment="Top" SelectionChanged="DataGrid_Waypoints_SelectionChanged"/>
+                    <Button x:Name="Button_DeleteWaypoint" Style="{StaticResource SquareButtonStyle}" HorizontalAlignment="Left" Margin="295,149,0,0" VerticalAlignment="Top" Width="90" Height="75" Click="Button_DeleteWaypoint_Click">
+                        <Grid Margin="2">
+                            <Image Source="Resource/RouteManagement_DeleteWaypoint.png" Margin="10,0,10,20"/>
+                            <Label Content="{Binding Model.DeleteWaypoint_Label}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" FontSize="10"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </ScrollViewer>
         </Grid>
+        <Grid Grid.ColumnSpan="2" Background="#FF1585B5" Margin="-1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Button_OpenFile" Style="{StaticResource AccentedSquareButtonStyle}" Content="{Binding Model.OpenFile_Label}" HorizontalAlignment="Left" Margin="20,12,0,10" VerticalAlignment="Center" Height="40" Width="100" Grid.RowSpan="2" Click="Button_OpenFile_Click"/>
+            <Button x:Name="Button_NewFile" Style="{StaticResource AccentedSquareButtonStyle}" Content="{Binding Model.NewFile_Label}" HorizontalAlignment="Left" Margin="125,12,0,10" VerticalAlignment="Center" Height="40" Width="100" Grid.RowSpan="2"/>
+            <Button x:Name="Button_SaveFile" Style="{StaticResource AccentedSquareButtonStyle}" Content="{Binding Model.SaveFile_Label}" HorizontalAlignment="Left" Margin="230,12,0,10" VerticalAlignment="Center" Height="40" Width="100" Grid.RowSpan="2"/>
+            <Button x:Name="Button_SaveAsFile" Style="{StaticResource AccentedSquareButtonStyle}" Content="{Binding Model.SaveAsFile_Label}" HorizontalAlignment="Left" Margin="335,12,0,10" VerticalAlignment="Center" Height="40" Width="100" Grid.RowSpan="2"/>
         </Grid>
+    </Grid>
 </UserControl>

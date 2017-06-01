@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <cefSharp:ChromiumWebBrowser x:Name="HelpCenterBrowser" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Address="http://github.com/Issac-Pandroid/SH_Technical_Compitition/wiki" LayoutUpdated="HelpCenterBrowser_LayoutUpdated"/>
+        <cefSharp:ChromiumWebBrowser x:Name="HelpCenterBrowser" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Address="https://github.com/Issac-Pandroid/Mandarin_GroundStation/wiki" LayoutUpdated="HelpCenterBrowser_LayoutUpdated"/>
         <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="60" Height="60" x:Name="HelpCenterHome" Margin="0,0,30,30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="HelpCenterHome_Click" Background="#FF10BBFB">
             <Image x:Name="RefreshButtonImage" Source="Resource/HelpCenter_Refresh.png" Margin="15"/>
         </Button>

@@ -13,11 +13,8 @@
                 <Grid x:Name="DeviceStatueGrid" Margin="-2,-2,-2,-2"/>
             </TabItem>
             <TabItem x:Name="RouteManagementItemTab" Header="RouteManagementTab" Width="60">
-                <Grid Margin="-2,-2,-2,-2">
-                    <Grid>
-                        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="377,282,0,0" VerticalAlignment="Top" Width="75"/>
-                    </Grid>
-                </Grid>
+
+                <Grid x:Name="RouteManagementGrid" Margin="-2,-2,-2,-2"/>
             </TabItem>
             <TabItem x:Name="LocalSettingItemTab" Header="LocalSettingTab" Width="60">
                 <Grid Margin="-2,-2,-2,-2">

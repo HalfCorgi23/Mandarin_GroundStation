@@ -32,13 +32,13 @@ namespace Mandarin_GroundStation
             ViewModel = new MainControlViewModel(_json.Read("Dictionary", "MainControl"));
             _vehiclestatuecontrol = new VehicleStatue(_json.Read("Dictionary", "VehicleStatue")) {Margin=new Thickness(-1) };
             _vehiclestatuecontrol.ControlsDictionary = _json.Read("Dictionary", "VehicleControl");
-            //_routemanagementcontrol = new RouteManagement(_json.Read("Dictionary", "RouteManagement"));
+            _routemanagementcontrol = new RouteManagement(_json.Read("Dictionary", "RouteManagement"));
             //_locolsettingscontrol = new LocalSettingsControl(_json.Read("Dictionary", "LocalSettingsControl"));
             _helpcentercontrol = new HelpCenter(_json.Read("Dictionary", "HelpCenter"));
 
             DeviceStatueGrid.Children.Add(_vehiclestatuecontrol);
             //LocalSettingsGrid.Children.Add(_locolsettingscontrol);
-            //RouteManagementGrid.Children.Add(_routemanagementcontrol);
+            RouteManagementGrid.Children.Add(_routemanagementcontrol);
             HelpCenterGrid.Children.Add(_helpcentercontrol);
             _vehiclestatuecontrol.ShowConnectionError += _vehiclestatuecontrol_ShowConnectionError;
         }
@@ -71,7 +71,7 @@ namespace Mandarin_GroundStation
         }
         private static JSON_Unserial _json;
         private static VehicleStatue _vehiclestatuecontrol;
-        //private static RouteManagement _routemanagementcontrol;
+        private static RouteManagement _routemanagementcontrol;
         //private static LocalSettingsControl _locolsettingscontrol;
         private static HelpCenter _helpcentercontrol;
     }
